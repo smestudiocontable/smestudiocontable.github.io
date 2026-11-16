@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SM Estudio Contable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+/* Layout: cabecera azul marino con sello dorado; cuerpo claro en una columna de 1080px con secciones en grilla. Tema único (marca). */
+:root{
+  color-scheme: light;
+  --navy:#0B1F3A;
+  --navy-2:#132B4D;
+  --gold:#C9A24B;
+  --gold-soft:#E6D3A1;
+  --paper:#F6F4EF;
+  --card:#FFFFFF;
+  --ink:#16202E;
+  --muted:#5A6678;
+  --line:#DDD8CC;
+  --display:"DM Serif Display", Georgia, "Times New Roman", serif;
+  --body:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+
+/* Barra superior */
+.top{background:var(--navy);color:#fff;position:sticky;top:0;z-index:5;border-bottom:1px solid rgba(201,162,75,.35)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand span{font-family:var(--display);font-size:22px;letter-spacing:.3px}
+.brand b{color:var(--gold);font-weight:400}
+nav{display:flex;gap:6px 22px;flex-wrap:wrap}
+nav a{text-decoration:none;font-size:15px;font-weight:500;color:#DCE3EE;padding:4px 0;border-bottom:2px solid transparent}
+nav a:hover{color:#fff;border-bottom-color:var(--gold)}
+
+/* Portada */
+.hero{background:var(--navy);color:#fff;padding:72px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:center}
+.eyebrow{font-size:13px;letter-spacing:3px;font-weight:600;color:var(--gold);text-transform:uppercase}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,6vw,68px);line-height:1.05;margin:16px 0 20px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{font-size:19px;color:#D5DCE8;max-width:34em}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:16px;padding:13px 24px;border-radius:6px;border:1.5px solid var(--gold)}
+.btn.solid{background:var(--gold);color:var(--navy)}
+.btn.solid:hover{background:var(--gold-soft)}
+.btn.ghost{color:var(--gold)}
+.btn.ghost:hover{background:rgba(201,162,75,.12)}
+.seal{border:1px solid rgba(201,162,75,.5);border-radius:10px;padding:32px;display:flex;flex-direction:column;gap:18px;background:var(--navy-2)}
+.seal .who{font-weight:600;font-size:17px}
+.seal .mp{color:var(--gold);font-size:14px;letter-spacing:1px}
+.seal hr{border:0;border-top:1px solid rgba(201,162,75,.3);margin:0;width:100%}
+.seal .place{font-size:15px;color:#C3CCDA}
+
+/* Secciones */
+section{padding:72px 0}
+section.alt{background:#EEEAE0}
+.head{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;max-width:42em}
+.head .eyebrow{color:#8A6A1E}
+.head h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4vw,42px);line-height:1.1;color:var(--navy)}
+.head p{color:var(--muted)}
+.grid{display:grid;gap:20px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.card h3{font-size:20px;color:var(--navy);font-weight:700}
+.card p{font-size:15.5px;color:var(--muted)}
+.svc{border-top:4px solid var(--gold)}
+.svc svg{width:34px;height:34px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Carruseles */
+.car{text-decoration:none;transition:border-color .15s, transform .15s}
+.car:hover{border-color:var(--gold);transform:translateY(-2px)}
+@media (prefers-reduced-motion: reduce){.car{transition:none}.car:hover{transform:none}}
+.tag{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8A6A1E;background:#F3E9CC;border-radius:4px;padding:3px 9px}
+.car h3{font-size:18px}
+.car .go{margin-top:auto;font-size:14.5px;font-weight:600;color:var(--navy)}
+
+/* Vencimientos */
+.venc h3{font-size:18px}
+.venc .sub{font-size:14px;color:var(--muted);margin-top:-6px}
+.venc table{width:100%;border-collapse:collapse;font-size:15.5px;font-variant-numeric:tabular-nums}
+.venc th{text-align:left;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:#8A6A1E;font-weight:700;padding:6px 0;border-bottom:1px solid var(--line)}
+.venc td{padding:8px 0;border-bottom:1px solid var(--line);color:var(--ink)}
+.venc tr:last-child td{border-bottom:0}
+.venc th:last-child,.venc td:last-child{text-align:right;font-weight:600;color:var(--navy);white-space:nowrap}
+
+/* Noticias */
+.news{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
+.news a{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:18px 24px;text-decoration:none;border-top:1px solid var(--line)}
+.news a:first-child{border-top:0}
+.news a:hover{background:#FBF8F0}
+.news .src{font-size:12.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#8A6A1E}
+.news .ttl{font-weight:600;color:var(--navy)}
+.news .dt{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sources{margin-top:20px}
+.sources .card{flex-direction:row;align-items:center;justify-content:space-between;padding:18px 22px;text-decoration:none}
+.sources .card:hover{border-color:var(--gold)}
+.sources b{color:var(--navy)}
+.sources span{font-size:14px;color:var(--muted)}
+.sources .card>span:last-child{white-space:nowrap}
+.fine{margin-top:16px;font-size:14px;color:var(--muted)}
+
+/* Contacto */
+.contact{background:var(--navy);color:#fff}
+.contact .head h2{color:#fff}
+.contact .head .eyebrow{color:var(--gold)}
+.contact .head p{color:#C3CCDA}
+.contact .card{background:var(--navy-2);border-color:rgba(201,162,75,.4)}
+.contact .card h3{color:var(--gold);font-size:14px;letter-spacing:2px;text-transform:uppercase}
+.contact .grid{grid-template-columns:minmax(0,1fr) minmax(0,1.45fr) minmax(0,1fr)}
+.contact .card{padding:24px}
+.contact .card p,.contact .card a{color:#fff;font-size:16.5px;font-weight:500;white-space:nowrap}
+.contact .card small{color:#C3CCDA;font-size:14px}
+footer{background:#081629;color:#9AA7BA;font-size:14px;padding:22px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contact .grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .g4,.g3,.g2{grid-template-columns:1fr}
+  section{padding:52px 0}
+  .hero{padding:48px 0 56px}
+  .news a{grid-template-columns:1fr;gap:4px}
+  .top{position:static}
+  .contact .card a{font-size:clamp(12.5px,3.9vw,16.5px)}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="SM Estudio Contable, inicio">
+      <svg width="34" height="34" viewBox="0 0 44 44" aria-hidden="true" fill="none" stroke="#C9A24B" stroke-width="3" stroke-linecap="round"><path d="M6 34 Q22 4 38 14"/><line x1="12" y1="38" x2="12" y2="28"/><line x1="20" y1="38" x2="20" y2="22"/><line x1="28" y1="38" x2="28" y2="25"/><line x1="36" y1="38" x2="36" y2="19"/></svg>
+      <span><b>SM</b> Estudio Contable</span>
+    </a>
+    <nav aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#nosotros">Quiénes somos</a>
+      <a href="#carruseles">Guías</a>
+      <a href="#vencimientos">Vencimientos</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Servicios contables e impositivos · Catamarca</p>
+        <h1>Tus números en orden, <em>tus impuestos al día</em>.</h1>
+        <p class="lead">Acompañamos a monotributistas, profesionales, comercios y sociedades en impuestos, sueldos, balances y trámites societarios.</p>
+        <div class="cta">
+          <a class="btn solid" href="#contacto">Hacer una consulta</a>
+          <a class="btn ghost" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+      <aside class="seal" aria-label="Profesionales a cargo">
+        <div>
+          <p class="who">CP María Belén Molas Lencina</p>
+          <p class="mp">MP 2069</p>
+        </div>
+        <hr>
+        <div>
+          <p class="who">CP Facundo Damián Sampayo</p>
+          <p class="mp">MP 2068</p>
+        </div>
+        <hr>
+        <p class="place">San Fernando del Valle de Catamarca · Instagram @estudio.contable.cat</p>
+      </aside>
+    </div>
+  </div>
+
+  <section id="servicios" class="alt">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Servicios</p>
+        <h2>Cuatro áreas, un solo estudio</h2>
+        <p>Trabajamos con atención personalizada y seguimiento mensual de cada cliente.</p>
+      </div>
+      <div class="grid g4">
+        <article class="card svc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h7"/></svg>
+          <h3>Impuestos</h3>
+          <p>Monotributo (altas, recategorizaciones y bajas), IVA, Ganancias, Bienes Personales e Ingresos Brutos. Declaraciones juradas y planes de pago.</p>
+        </article>
+        <article class="card svc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.900 6.500 5.500"/><path d="M17 8h5M19.500 5.500v5"/></svg>
+          <h3>Sueldos</h3>
+          <p>Liquidación de haberes, recibos, cargas sociales (F. 931), altas y bajas de personal y libro de sueldos.</p>
+        </article>
+        <article class="card svc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg>
+          <h3>Balances</h3>
+          <p>Estados contables, registraciones, certificaciones de ingresos e informes para bancos y organismos.</p>
+        </article>
+        <article class="card svc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-5h6v5"/><path d="M9 10h.01M15 10h.01"/></svg>
+          <h3>Sociedades</h3>
+          <p>Constitución de sociedades, inscripciones, libros societarios y asesoramiento sobre la figura que más conviene.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Quiénes somos</p>
+        <h2>Dos contadores públicos matriculados en Catamarca</h2>
+        <p>SM Estudio Contable reúne a dos profesionales que trabajan en equipo. Cada cliente tiene trato directo con un contador.</p>
+      </div>
+      <div class="grid g3">
+        <article class="card">
+          <h3>María Belén Molas Lencina</h3>
+          <p>Contadora Pública · MP 2069</p>
+        </article>
+        <article class="card">
+          <h3>Facundo Damián Sampayo</h3>
+          <p>Contador Público · MP 2068</p>
+        </article>
+        <article class="card">
+          <h3>Cómo trabajamos</h3>
+          <p>Consulta inicial, diagnóstico de tu situación fiscal y un plan de trabajo claro, con vencimientos avisados a tiempo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="carruseles" class="alt">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Guías y carruseles</p>
+        <h2>Todo lo que publicamos en Instagram</h2>
+        <p>Cada guía explica un tema en pocas placas. Tocá una para abrirla.</p>
+      </div>
+      <!-- CARRUSELES:INICIO (agregar acá cada carrusel nuevo) -->
+      <div class="grid g3">
+        <a class="card car" href="https://claude.ai/artifact/8bo21P8DvhMwrQs45qyYec"><span class="tag">Monotributo · Módulo 1</span><h3>Qué es el monotributo</h3><span class="go">Abrir guía →</span></a>
+        <a class="card car" href="https://claude.ai/artifact/5PRjmkRGvnnXUnUz6Ag68j"><span class="tag">Monotributo · Módulo 2</span><h3>Alta y facturación</h3><span class="go">Abrir guía →</span></a>
+        <a class="card car" href="https://claude.ai/artifact/7TZuqrFNdH7zmReMdqXfTF"><span class="tag">Monotributo</span><h3>Recategorización</h3><span class="go">Abrir guía →</span></a>
+        <a class="card car" href="https://claude.ai/artifact/STXBD22VqmadFJzNWhGj8o"><span class="tag">Monotributo · Módulo 4</span><h3>Gestión mensual</h3><span class="go">Abrir guía →</span></a>
+        <a class="card car" href="https://claude.ai/artifact/XpF51sWg1Ne5m9YLbmwyRt"><span class="tag">Monotributo · Módulo 5</span><h3>Ingresos Brutos</h3><span class="go">Abrir guía →</span></a>
+        <a class="card car" href="https://claude.ai/artifact/SY6fbQhPWQ58NTMGcygre1"><span class="tag">Monotributo · Módulo 6</span><h3>Pasar al régimen general</h3><span class="go">Abrir guía →</span></a>
+        <a class="card car" href="https://claude.ai/artifact/AKZToUE6iCv88VLJfsxDhK"><span class="tag">Impuestos</span><h3>Exportación de servicios</h3><span class="go">Abrir guía →</span></a>
+        <a class="card car" href="https://claude.ai/artifact/Y24R4GSnn4AeSASxfHcKUN"><span class="tag">Sociedades</span><h3>Colaboradores (PADIC)</h3><span class="go">Abrir guía →</span></a>
+        <a class="card car" href="https://claude.ai/artifact/3xNkhmpcBeTU49z6qoimLA"><span class="tag">Actualidad</span><h3>Inocencia Fiscal I y II</h3><span class="go">Abrir guía →</span></a>
+      </div>
+      <!-- CARRUSELES:FIN -->
+    </div>
+  </section>
+
+  <section id="vencimientos">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Vencimientos</p>
+        <h2>Agenda de ARCA · noviembre 2026</h2>
+        <p>Fechas según la terminación de tu CUIT. Fuente: agenda oficial de vencimientos de ARCA.</p>
+      </div>
+      <!-- VENCIMIENTOS:INICIO (se reemplaza cada mes) -->
+      <div class="grid g3">
+        <article class="card venc"><h3>Autónomos</h3><p class="sub">Pago mensual</p><table><thead><tr><th>Terminación de CUIT</th><th>Vence</th></tr></thead><tbody><tr><td>0, 1, 2 y 3</td><td>05/11</td></tr><tr><td>4, 5 y 6</td><td>11/11</td></tr><tr><td>7, 8 y 9</td><td>12/11</td></tr></tbody></table></article>
+        <article class="card venc"><h3>Empleadores (F. 931)</h3><p class="sub">Declaración jurada y pago</p><table><thead><tr><th>Terminación de CUIT</th><th>Vence</th></tr></thead><tbody><tr><td>0, 1, 2 y 3</td><td>11/11</td></tr><tr><td>4, 5 y 6</td><td>12/11</td></tr><tr><td>7, 8 y 9</td><td>13/11</td></tr></tbody></table></article>
+        <article class="card venc"><h3>Casas particulares</h3><p class="sub">Aportes y contribuciones</p><table><thead><tr><th>Terminación de CUIT</th><th>Vence</th></tr></thead><tbody><tr><td>Pago obligatorio · todas</td><td>11/11</td></tr><tr><td>Pago voluntario · todas</td><td>16/11</td></tr></tbody></table></article>
+        <article class="card venc"><h3>Ganancias</h3><p class="sub">Declaración jurada · período 2025</p><table><thead><tr><th>Terminación de CUIT</th><th>Vence</th></tr></thead><tbody><tr><td>Todas</td><td>16/11</td></tr></tbody></table></article>
+        <article class="card venc"><h3>IVA y Libro de IVA Digital</h3><p class="sub">Declaración jurada y pago</p><table><thead><tr><th>Terminación de CUIT</th><th>Vence</th></tr></thead><tbody><tr><td>0 y 1</td><td>18/11</td></tr><tr><td>2 y 3</td><td>19/11</td></tr><tr><td>4 y 5</td><td>20/11</td></tr><tr><td>6 y 7</td><td>24/11</td></tr><tr><td>8 y 9</td><td>25/11</td></tr></tbody></table></article>
+        <article class="card venc"><h3>Monotributo</h3><p class="sub">Pago mensual</p><table><thead><tr><th>Terminación de CUIT</th><th>Vence</th></tr></thead><tbody><tr><td>Todas</td><td>20/11</td></tr></tbody></table></article>
+      </div>
+      <!-- VENCIMIENTOS:FIN -->
+      <p class="fine">Verificá siempre en <a href="https://www.argentina.gob.ar/arca/vencimientos">argentina.gob.ar/arca/vencimientos</a>: las fechas pueden prorrogarse.</p>
+    </div>
+  </section>
+
+  <section id="noticias" class="alt">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Noticias</p>
+        <h2>Actualidad impositiva y contable</h2>
+        <p>Titulares de los portales que seguimos. Cada uno abre la nota completa en el sitio que la publicó.</p>
+      </div>
+      <!-- NOTICIAS:INICIO (la actualización diaria reemplaza este bloque; máximo 12 titulares, el más nuevo arriba) -->
+      <div class="news">
+        <a href="https://www.ignacioonline.com.ar/blanqueo-laboral-per-entra-en-su-etapa-final-las-fechas-que-hay-que-tener-en-cuenta/"><span class="src">Ignacio Online</span><span class="ttl">Blanqueo laboral PER entra en su etapa final, las fechas que hay que tener en cuenta</span><span class="dt">12/11/2026</span></a>
+        <a href="https://www.ignacioonline.com.ar/arca-reglamento-la-reduccion-del-50-de-multas-formales-como-acceder-y-hasta-cuando/"><span class="src">Ignacio Online</span><span class="ttl">ARCA reglamentó la reducción del 50% de multas formales: cómo acceder y hasta cuándo</span><span class="dt">12/11/2026</span></a>
+        <a href="https://www.ignacioonline.com.ar/f-u-t-u-r-o-otra-declaracion-jurada-y-el-mismo-cansancio/"><span class="src">Ignacio Online</span><span class="ttl">F.U.T.U.R.O.: otra declaración jurada y el mismo cansancio</span><span class="dt">07/11/2026</span></a>
+        <a href="https://www.ignacioonline.com.ar/empleados-de-comercio-prorrogan-por-6-meses-el-25-de-aporte-solidario-y-ultraactividad/"><span class="src">Ignacio Online</span><span class="ttl">Empleados de Comercio: prorrogan por 6 meses el 2,5% de aporte solidario y ultraactividad</span><span class="dt">06/11/2026</span></a>
+        <a href="https://blogdelcontador.com.ar"><span class="src">Blog del Contador</span><span class="ttl">Ganancias vence el 16 de noviembre: qué revisar antes de presentar la declaración jurada</span><span class="dt">03/11/2026</span></a>
+        <a href="https://blogdelcontador.com.ar"><span class="src">Blog del Contador</span><span class="ttl">Sueldos de noviembre: el tope para aportes sube a $4,86 millones y cambia la liquidación</span><span class="dt">03/11/2026</span></a>
+        <a href="https://blogdelcontador.com.ar"><span class="src">Blog del Contador</span><span class="ttl">Planes de ARCA: cómo calcular qué cuota puede sostener una pyme</span><span class="dt">03/11/2026</span></a>
+        <a href="https://blogdelcontador.com.ar"><span class="src">Blog del Contador</span><span class="ttl">Honorarios de directores: la fecha que obliga a emitir la factura y cómo documentarla</span><span class="dt">03/11/2026</span></a>
+      </div>
+      <!-- NOTICIAS:FIN -->
+      <div class="grid g2 sources">
+        <a class="card" href="https://www.ignacioonline.com.ar"><span><b>Ignacio Online</b><br><span>ignacioonline.com.ar</span></span><span>Ir →</span></a>
+        <a class="card" href="https://blogdelcontador.com.ar"><span><b>Blog del Contador</b><br><span>blogdelcontador.com.ar</span></span><span>Ir →</span></a>
+      </div>
+      <p class="fine">Los titulares pertenecen a sus respectivos medios. Última actualización: 13/11/2026.</p>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Contacto</p>
+        <h2>Escribinos y coordinamos una consulta</h2>
+        <p>Atendemos en Catamarca y de forma remota.</p>
+      </div>
+      <div class="grid g3">
+        <div class="card">
+          <h3>Teléfonos</h3>
+          <a href="tel:+543834931490">383 493-1490</a>
+          <a href="tel:+543834226019">383 422-6019</a>
+        </div>
+        <div class="card">
+          <h3>Mail</h3>
+          <a href="mailto:smestudiocontablecat@gmail.com">smestudiocontablecat@gmail.com</a>
+        </div>
+        <div class="card">
+          <h3>Instagram</h3>
+          <a href="https://www.instagram.com/estudio.contable.cat/">@estudio.contable.cat</a>
+          <small>Guías y novedades todas las semanas</small>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>SM Estudio Contable · Molas Lencina &amp; Sampayo · Catamarca</span>
+    <span>MP 2069 · MP 2068</span>
+  </div>
+</footer>
+
+</body>
+</html>
