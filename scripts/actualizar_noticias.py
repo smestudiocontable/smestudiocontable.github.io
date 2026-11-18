@@ -119,7 +119,7 @@ def desde_portada(cfg):
         url = url.replace("/amp", "")
         if url not in vistos:
             vistos.append(url)
-    for url in vistos[:12]:
+    for url in vistos[:40]:
         try:
             pag = bajar(url)
         except Exception as e:
@@ -134,8 +134,6 @@ def desde_portada(cfg):
             fecha = fecha_de(f.group(1))
             if titulo and fecha:
                 notas.append((fecha, titulo, url))
-        if len(notas) >= POR_SITIO:
-            break
     return notas
 
 
